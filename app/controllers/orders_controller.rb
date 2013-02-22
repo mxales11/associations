@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
+
+before_filter :convert_customer_name_to_id, only: [:create, :update]
+
   def index
     @orders = Order.all
 
@@ -14,6 +17,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
+    @item = @order.item
 
     respond_to do |format|
       format.html # show.html.erb
@@ -80,4 +84,13 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  private
+
+  def convert_customer_name_to_id
+    customer = Customer.find_by_name(params[:order].delete(:customer_name))
+    params[:order].merge!({customer_id: customer.id}) unless customer.nil?
+  end
+
 end

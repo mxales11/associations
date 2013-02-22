@@ -12,9 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :item_name %><br />
-    <%= f.text_field :item_name %>
+    <%= f.label :item %><br />
+    <%= f.collection_select :item_id, Item.all, :name, :name %>
+    <%= f.collection_select :item_id, Item.all, :id, :name %>
   </div>
+  
   <div class="field">
     <%= f.label :quantity %><br />
     <%= f.number_field :quantity %>
@@ -25,7 +27,7 @@
   </div>
   <div class="field">
     <%= f.label :customer_name %><br />
-    <%= f.text_field :customer_name %>
+    <%= f.text_field :customer_name, :value=>customer_name(@order)%>
   </div>
   <div class="actions">
     <%= f.submit %>
