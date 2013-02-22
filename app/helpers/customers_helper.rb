@@ -5,26 +5,16 @@ module CustomersHelper
 	end
 
 
-	def display_orders(customer)
+	def display_order_header(customer)
 
-		if customer.orders.any?
+		if customer.orders.count==0
 
-			out = "<br> Orders (#{customer.orders.count})</br>
-			<table class = 'table-striped table-bordered'>"
-			customer.orders.each do |order|
-				out = out + 
-				"<tr>
-				<td>#{order.item.name}</td>
-				<td>#{order.quantity}</td>
-				<td>#{order.total_cost}</td>
-				</tr>"
-			end	
+			out="<br>No orders</br>"
+
 		else
-			"No orders"
+			out = "<br>Orders: </br>"
+
 		end
-		
-		out = out + "</table>"
 		out.html_safe
 	end
-
-	end
+end
