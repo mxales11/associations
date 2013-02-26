@@ -1,7 +1,7 @@
 <h1>Listing customers</h1>
 
 <table>
-  <tr>
+  <tr class = 'keys'>
     <th>Id</th>
     <th>Name</th>
     <th>Phone</th>
@@ -9,10 +9,12 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% @customers.each do |customer| %>
-  <tr>
+  <tr class = 'values'>
     <td><%= customer.id %></td>
     <td><%= customer.name %></td>
     <td><%= customer.phone %></td>
@@ -27,6 +29,5 @@
 <% end %>
 </table>
 
-<br />
 
 <%= link_to 'New Customer', new_customer_path %>

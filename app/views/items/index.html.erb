@@ -1,7 +1,7 @@
 <h1>Listing items</h1>
 
 <table>
-  <tr>
+  <tr class = 'keys'>
     <th>Name</th>
     <th>Id</th>
     <th></th>
@@ -10,7 +10,7 @@
   </tr>
 
 <% @items.each do |item| %>
-  <tr>
+  <tr class = 'values'>
     <td><%= item.name %></td>
     <td><%= item.id %></td>
     <td><%= link_to 'Show', item %></td>

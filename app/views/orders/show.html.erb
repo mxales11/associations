@@ -2,7 +2,7 @@
 
 <p>
   <b>Item name:</b>
-  <%= @order.item.name %>
+  <%= Item.find(@order.item_id).name %>
 </p>
 
 <p>
@@ -23,3 +23,4 @@
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
+
