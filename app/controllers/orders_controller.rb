@@ -5,8 +5,12 @@ class OrdersController < ApplicationController
 before_filter :convert_customer_name_to_id, only: [:create, :update]
 
   def index
-    @orders = Order.all
-
+    if  params[:customer_id].nil?
+      @orders = Order.all
+    else
+    @orders = Order.find_all_by_customer_id(params[:customer_id])
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @orders }
@@ -28,6 +32,10 @@ before_filter :convert_customer_name_to_id, only: [:create, :update]
   # GET /orders/new
   # GET /orders/new.json
   def new
+    if !params[:customer_id].nil?
+    @customer = Customer.find(params[:customer_id])
+    end
+
     @order = Order.new
 
     respond_to do |format|

@@ -5,6 +5,10 @@ Associations::Application.routes.draw do
 
   resources :customers
 
+  resources :customers do
+    resources :orders
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
