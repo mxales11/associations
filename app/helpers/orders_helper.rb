@@ -3,13 +3,18 @@ module OrdersHelper
 
 	def displayOrders(orders) 
 
-
-
 		if orders.count==0
 
 			out=
-			"No orders 
-			<th>#{link_to 'New Order', new_order_path}</th>"
+
+			"<table>
+			<tr>
+				<th>No orders</th>
+				<th>#{link_to 'New Order', new_order_path}</th>
+			</tr>
+			</table>"
+
+			
 
 		else
 		out = 
@@ -44,8 +49,11 @@ module OrdersHelper
 					<th>#{link_to 'New Order', new_order_path}</th>
 					</tr>
 			</div>"
-			out.html_safe
+			
 		end
+		out.html_safe
 	end
+
+
 end
 
