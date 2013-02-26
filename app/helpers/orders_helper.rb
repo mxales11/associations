@@ -8,7 +8,8 @@ module OrdersHelper
 		if orders.count==0
 
 			out=
-			"No orders"
+			"No orders 
+			<th>#{link_to 'New Order', new_order_path}</th>"
 
 		else
 		out = 
