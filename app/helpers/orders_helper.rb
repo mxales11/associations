@@ -1,9 +1,16 @@
 module OrdersHelper
 
 
-
-
 	def displayOrders(orders) 
+
+
+
+		if orders.count==0
+
+			out=
+			"No orders"
+
+		else
 		out = 
 		"<div class = 'orders'>
 			<table table-bordered>
@@ -37,6 +44,7 @@ module OrdersHelper
 					</tr>
 			</div>"
 			out.html_safe
+		end
 	end
 end
 
